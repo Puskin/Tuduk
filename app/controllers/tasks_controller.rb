@@ -22,9 +22,9 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(params[:task])
       if @task.save
-        redirect_to root_path, notice: 'Task was successfully created.'
+        redirect_to root_path, :flash => { :success => 'Task was successfully created.' }
       else
-        redirect_to root_path, notice: 'Describe the task.'
+        redirect_to root_path, :flash => { :error => 'Describe the task.' }
       end
   end
 

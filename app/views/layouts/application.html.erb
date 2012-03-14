@@ -50,7 +50,11 @@
 				<div class="tabbable tabs-left">
 				  <ul class="nav nav-tabs">
 				    <li><h6>Lists<a href="#" class="btn btn-mini pull-right"><i class="icon-plus"></i></a></h6></li>
-				    <li class="active"><a href="#1" data-toggle="tab">Private</a></li>
+				    <li class="active">
+				    	<a href="#1" data-toggle="tab">
+				    		Private<span class="badge pull-right"><%= current_user.tasks.count %></span>
+				    	</a>
+				    </li>
 				    <li><a href="#2" data-toggle="tab">School</a></li>
 				    <li><a href="#2" data-toggle="tab">Work</a></li>
 				    <li><a href="#2" data-toggle="tab">Someday</a></li>

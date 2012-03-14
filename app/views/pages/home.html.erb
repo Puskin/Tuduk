@@ -2,8 +2,9 @@
 
 	<% provide(:title, "Your Dashboard") %>
 
-	<%= render 'tasks/form' %>
-
+	<div class="row-fluid">
+		<%= render 'tasks/form' %>
+	</div>
 
 	<% if @user.tasks.any? %>
 		<table class="table">
