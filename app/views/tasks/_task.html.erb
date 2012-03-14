@@ -1,4 +1,12 @@
 <tr>
 <td><%= task.id %></td>
 <td><%= task.content %></td>
+<td>
+	<% if current_user?(task.user) %>
+    <%= link_to "delete", task, method:  :delete,
+                                confirm: "You sure?",
+                                title:   task.content,
+                                :class => "btn btn-danger btn-mini" %>
+  <% end %>
+</td>
 </tr>
