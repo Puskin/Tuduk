@@ -1,16 +1,19 @@
 class PagesController < ApplicationController
 
-  before_filter :redirect_if_signed, except: [:home]
+  before_filter :signed_in_redirect, except: [:home]
 	layout :select_layout
   
   def home
+
+    if signed_in?
+      @user = current_user
+      @tasks = @user.tasks
+      @task = current_user.tasks.build
+    end
+
   end
 
   private
-
-  	def redirect_if_signed
-      redirect_to root_path if signed_in?
-  	end
 
   	def select_layout
   		if signed_in? && action_name == "home"

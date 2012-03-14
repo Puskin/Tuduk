@@ -1,7 +1,23 @@
 <% if signed_in? %>
 
 	<% provide(:title, "Your Dashboard") %>
-	<p>There will be your tasks here.</p>
+
+	<%= render 'tasks/form' %>
+
+
+	<% if @user.tasks.any? %>
+		<table class="table">
+		  <thead>
+		    <tr>
+		    	<th>ID</th>
+		      <th>Content</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    	<%= render @tasks %>
+		  </tbody>
+		</table>
+	<% end %>
 
 <% else %>
 

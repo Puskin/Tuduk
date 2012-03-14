@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :signed_in_user,      except: [:new, :create]
-  before_filter :redirect_if_signed,  only:   [:new, :create]
+  before_filter :signed_in_redirect,  only:   [:new, :create]
   before_filter :correct_user,        only:   [:edit, :update, :destroy]
   
   layout "frontend",                  only:   [:new]
@@ -52,14 +52,6 @@ class UsersController < ApplicationController
 
 
   private
-
-    def signed_in_user
-      redirect_to signin_path, notice: "Please sign in" unless signed_in?
-    end
-
-    def redirect_if_signed
-      redirect_to root_path if signed_in?
-    end
 
     def correct_user
       @user = User.find(params[:id])

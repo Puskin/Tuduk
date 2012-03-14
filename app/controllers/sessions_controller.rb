@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  before_filter :redirect_if_signed, only: [:new, :create] 
+  before_filter :signed_in_redirect, only: [:new, :create] 
 
   layout "frontend", only: [:new]
 
@@ -23,11 +23,5 @@ class SessionsController < ApplicationController
 		sign_out
 		redirect_to root_path
 	end
-
-	private
-
-		def redirect_if_signed
-      redirect_to root_path if signed_in?
-  	end
 
 end
