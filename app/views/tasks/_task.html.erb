@@ -1,12 +1,12 @@
-<tr>
-<td><%= task.id %></td>
-<td><%= task.content %></td>
-<td>
-	<% if current_user?(task.user) %>
+<li id='<%= "task_#{task.id}" %>'>
+<%= task.id %>
+<%= task.content %>
+
+<% if current_user?(task.user) %>
     <%= link_to "delete", task, method:  :delete,
-                                confirm: "You sure?",
                                 title:   task.content,
-                                :class => "btn btn-danger btn-mini" %>
+                                :class => "btn btn-danger btn-mini",
+                                :remote => true %>
   <% end %>
-</td>
-</tr>
+
+</li>

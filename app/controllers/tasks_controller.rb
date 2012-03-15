@@ -21,10 +21,14 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.build(params[:task])
-      if @task.save
-        redirect_to root_path, :flash => { :success => 'Task was successfully created.' }
-      else
-        redirect_to root_path, :flash => { :error => 'Describe the task.' }
+      respond_to do |format|
+        if @task.save
+          format.html { redirect_to root_path, :flash => { :success => 'Task was successfully created.' } }
+          format.js { @tasks = current_user.tasks }
+        else
+          format.html { redirect_to root_path, :flash => { :error => 'Describe the task.' } }
+          format.js 
+        end
       end
   end
 
@@ -45,7 +49,10 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { @tasks = current_user.tasks }
+    end
   end
   
 end

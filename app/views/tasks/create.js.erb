@@ -1,0 +1,3 @@
+$("#tasks_list").html("<%= escape_javascript( render @tasks ) %>");
+$("#private_tasks_counter").html('<%= @tasks.count %>')
+$("#new_task #task_content").val("");

@@ -7,18 +7,9 @@
 	</div>
 
 	<% if @user.tasks.any? %>
-		<table class="table">
-		  <thead>
-		    <tr>
-		    	<th>ID</th>
-		      <th>Content</th>
-		      <th>Action</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    	<%= render @tasks %>
-		  </tbody>
-		</table>
+		<ol id="tasks_list">
+   		<%= render @tasks %>
+		</ol>
 	<% end %>
 
 <% else %>
