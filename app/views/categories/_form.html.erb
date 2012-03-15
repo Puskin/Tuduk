@@ -1,4 +1,4 @@
-<%= form_for(current_user.categories.build, :html => { :class => "form-horizontal pull-left"}) do |f| %>
+<%= form_for(current_user.categories.build, :remote => true, :html => { :class => "form-horizontal pull-left"}) do |f| %>
 
   <%= render 'shared/error_messages', object: f.object %>
   <%= f.text_field :title, :placeholder => "New list name", :class => "input-medium" %>

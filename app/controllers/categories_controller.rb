@@ -1,50 +1,19 @@
 class CategoriesController < ApplicationController
-  # GET /categories
-  # GET /categories.json
-  def index
-    @categories = Category.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @categories }
-    end
-  end
-
-  # GET /categories/1
-  # GET /categories/1.json
-  def show
-    @category = Category.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @category }
-    end
-  end
-
-  # GET /categories/new
-  # GET /categories/new.json
-  def new
-    @category = Category.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @category }
-    end
-  end
-
-  # GET /categories/1/edit
   def edit
     @category = Category.find(params[:id])
   end
 
-  # POST /categories
-  # POST /categories.json
   def create
     @category = current_user.categories.build(params[:category])
-    if @category.save
-      redirect_to root_path, notice: 'Category was successfully created.'
-    else
-      render action: "new"
+    respond_to do |format|
+      if @category.save
+        format.html { redirect_to root_path, :flash => { :success => 'Category was successfully created.' } }
+        format.js { @categories = Category.find_all_by_user_id(current_user.id) }
+      else
+        format.html { redirect_to root_path, :flash => { :error => "Title can't be blank!"} }
+        format.js { @categories = Category.find_all_by_user_id(current_user.id) }
+      end
     end
   end
 

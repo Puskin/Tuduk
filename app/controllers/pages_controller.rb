@@ -4,13 +4,11 @@ class PagesController < ApplicationController
 	layout :select_layout
   
   def home
-
     if signed_in?
       @user = current_user
       @tasks = Task.find_all_by_user_id(current_user.id)
       @task = current_user.tasks.build
     end
-
   end
 
   private

@@ -19,20 +19,14 @@
   			</span>
   		</a>		
 		</li>
+	</ul>
 
-	  <% @lists = Category.find_all_by_user_id(current_user.id) %>
-	  <% @lists.each do |list| %>
-	  	<li>
-				<a href="#<%=list.id%>" data-toggle="tab">
-	  			<%= list.title %>
-	  			<span class="badge pull-right" id="private_tasks_counter">
-	  				<%= list.tasks.count %>
-	  			</span>
-	  		</a>		
-			</li>
-	  <% end %>
+	<ul class="nav nav-tabs" id="custom_lists">
+	  <% @categories = Category.find_all_by_user_id(current_user.id) %>
+	  <%= render @categories %>
+	</ul>
 
-
+	<ul class="nav nav-tabs">
 	  <li><h6>Default</h6></li>
 	  <li><a href="#1" data-toggle="tab"><i class="icon-time"></i>Today</a></li>
 	  <li><a href="#2" data-toggle="tab"><i class="icon-time"></i>Tomorrow</a></li>

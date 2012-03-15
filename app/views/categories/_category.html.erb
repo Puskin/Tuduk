@@ -1,0 +1,8 @@
+<li>
+	<a href="#<%=category.id%>" data-toggle="tab">
+		<%= category.title %>
+		<span class="badge pull-right" id="private_tasks_counter">
+			<%= category.tasks.count %>
+		</span>
+	</a>		
+</li>
