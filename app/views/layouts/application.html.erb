@@ -47,25 +47,7 @@
 
 		<div class="row-fluid">
 			<div class="span3" id="side">
-				<div class="tabbable tabs-left">
-				  <ul class="nav nav-tabs">
-				    <li><h6>Lists<a href="#" class="btn btn-mini pull-right"><i class="icon-plus"></i></a></h6></li>
-				    <li class="active">
-				    	<a href="#1" data-toggle="tab">
-				    		Private<span class="badge pull-right" id="private_tasks_counter"><%= current_user.tasks.count %></span>
-				    	</a>
-				    </li>
-				    <li><a href="#2" data-toggle="tab">School</a></li>
-				    <li><a href="#2" data-toggle="tab">Work</a></li>
-				    <li><a href="#2" data-toggle="tab">Someday</a></li>
-
-				    <li><h6>Default</h6></li>
-				    <li><a href="#1" data-toggle="tab"><i class="icon-time"></i>Today</a></li>
-				    <li><a href="#2" data-toggle="tab"><i class="icon-time"></i>Tomorrow</a></li>
-				    <li><a href="#2" data-toggle="tab"><i class="icon-time"></i>This week</a></li>
-				    <li><a href="#2" data-toggle="tab"><i class="icon-warning-sign"></i>Overdue</a></li>
-				  </ul>
-				</div>
+				<%= render "layouts/side" %>
 			</div>
 
 			<div class="span9" id="main">

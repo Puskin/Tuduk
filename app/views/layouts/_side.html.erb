@@ -1,0 +1,42 @@
+<div class="tabbable tabs-left">
+	<ul class="nav nav-tabs">
+	  <li>
+	  	<h6>Lists
+	  		<a href="#" class="btn btn-mini pull-right">
+	  			<i class="icon-plus active" id="add_category_button"></i>
+	  		</a>
+	  	</h6>
+	  	<div id="add_category_field">
+				<%= render 'categories/form' %>
+	  	</div>
+	  </li>
+
+  	<li class="active">
+			<a href="#all" data-toggle="tab">
+				Everything
+  			<span class="badge pull-right" id="private_tasks_counter">
+  				<%= current_user.tasks.count %>
+  			</span>
+  		</a>		
+		</li>
+
+	  <% @lists = Category.find_all_by_user_id(current_user.id) %>
+	  <% @lists.each do |list| %>
+	  	<li>
+				<a href="#<%=list.id%>" data-toggle="tab">
+	  			<%= list.title %>
+	  			<span class="badge pull-right" id="private_tasks_counter">
+	  				<%= list.tasks.count %>
+	  			</span>
+	  		</a>		
+			</li>
+	  <% end %>
+
+
+	  <li><h6>Default</h6></li>
+	  <li><a href="#1" data-toggle="tab"><i class="icon-time"></i>Today</a></li>
+	  <li><a href="#2" data-toggle="tab"><i class="icon-time"></i>Tomorrow</a></li>
+	  <li><a href="#2" data-toggle="tab"><i class="icon-time"></i>This week</a></li>
+	  <li><a href="#2" data-toggle="tab"><i class="icon-warning-sign"></i>Overdue</a></li>
+	</ul>
+</div>

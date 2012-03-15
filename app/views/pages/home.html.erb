@@ -7,9 +7,9 @@
 	</div>
 
 	<% if @user.tasks.any? %>
-		<ol id="tasks_list">
+		<ul class="unstyled" id="tasks_list">
    		<%= render @tasks %>
-		</ol>
+		</ul>
 	<% end %>
 
 <% else %>

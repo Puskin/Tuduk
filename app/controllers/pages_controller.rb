@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
     if signed_in?
       @user = current_user
-      @tasks = @user.tasks
+      @tasks = Task.find_all_by_user_id(current_user.id)
       @task = current_user.tasks.build
     end
 

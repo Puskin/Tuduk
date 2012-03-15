@@ -13,3 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+
+$(document).ready(function(ev){	
+
+	$('#add_category_button').click(function(ev){
+		$('#add_category_field').slideToggle();
+	}); 
+
+});                                                     
