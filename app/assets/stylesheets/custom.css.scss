@@ -36,14 +36,15 @@ ul.todo li a { margin-right: 5px }
 	border-bottom: 2px dotted lightgray; 
 	border-top: 2px dotted lightgray!important  
 }
-#side li:first-child h6 { border-top: none }
+#side li:first-child h6 { border-top: none!important }
 #side li i.icon-time,
 #side li i.icon-warning-sign { margin-right: 8px; float: left }
 #side li a.close { position: absolute;}
 
 
-#side #add_category_field { display: none; padding: 5px; height: 29px; }
+#side #add_category_field { display: none; padding: 5px; height: 29px; background: #cecccc }
 #side #add_category_field form { margin: 0; }
+#side #add_category_field #category_title { border-color: #aaaaaa }
 
 
 /* FOOTER -----------------------------------------------------------------------*/
