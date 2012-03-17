@@ -24,12 +24,12 @@ $(document).ready(function(ev){
 
 
 	/* Layout resizing */
-	
-	$("a[href=#fluidLay]").click(function () {
-    $("#content.container").toggleClass("container container-fluid");
+
+	$("button#layoutFluid").click(function () {
+    $(".container").toggleClass("container container-fluid");
   });
-  $("a[href=#fixedLay]").click(function () {
-    $("#content.container-fluid").toggleClass("container-fluid container");
+  $("button#layoutFixed").click(function () {
+    $(".container-fluid").toggleClass("container-fluid container");
   });
 
 

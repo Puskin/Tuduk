@@ -14,6 +14,16 @@
 	  </div>
 	</div>
 
+	<div class="container" id="settings">
+		<div class="well">
+			Adjust layout
+			<div class="btn-group pull-right" data-toggle="buttons-radio">
+			  <button class="btn btn-mini" id="layoutFixed">Fixed</button>
+			  <button class="btn btn-mini" id="layoutFluid">Fluid</button>
+			</div>
+		</div>
+	</div>
+
 	<div class="container" id="content">
 		
 		<% flash.each do |key, value| %>
@@ -35,12 +45,12 @@
 		
 	</div>
 
-	<div class="container-fluid">
+	<div class="container">
 		<%= render "layouts/footer" %>
 	</div>
 
 	<% if Rails.env.development? %>
-		<div class="container-fluid">
+		<div class="container">
       <%= debug(params) %>
     </div>
   <% end %>
