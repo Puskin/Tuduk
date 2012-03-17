@@ -1,3 +1,6 @@
-$("#custom_lists").html("<%= escape_javascript( render @categories ) %>");
+$("#side").html("<%= escape_javascript( render 'layouts/side' ) %>");
 $("#new_category #category_title").val("");
 
+$('#add_category_button').click(function(ev){
+		$('#add_category_field').slideToggle();
+});

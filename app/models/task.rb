@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
 
-  attr_accessible :content
+  attr_accessible :content, :category_id
   belongs_to :user
   belongs_to :category
 
