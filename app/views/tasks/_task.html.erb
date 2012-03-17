@@ -7,4 +7,7 @@
   <% end %>
 
 	<%= task.content %>
+	<% if task.category %>
+		<span class="label pull-right"><%= task.category.title %></span>
+	<% end %>
 </li>
