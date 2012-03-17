@@ -22,4 +22,16 @@ $(document).ready(function(ev){
 		$('#add_category_field').slideToggle();
 	}); 
 
+
+	/* Layout resizing */
+	
+	$("a[href=#fluidLay]").click(function () {
+    $("#content.container").toggleClass("container container-fluid");
+  });
+  $("a[href=#fixedLay]").click(function () {
+    $("#content.container-fluid").toggleClass("container-fluid container");
+  });
+
+
+
 });                                                     
