@@ -15,13 +15,7 @@
 	</div>
 
 	<div class="container" id="settings">
-		<div class="well">
-			Adjust layout
-			<div class="btn-group pull-right" data-toggle="buttons-radio">
-			  <button class="btn btn-mini" id="layoutFixed">Fixed</button>
-			  <button class="btn btn-mini" id="layoutFluid">Fluid</button>
-			</div>
-		</div>
+		<%= render "layouts/settings" %>
 	</div>
 
 	<div class="container" id="content">
@@ -47,6 +41,8 @@
 
 	<div class="container">
 		<%= render "layouts/footer" %>
+		<a class="btn" data-toggle="modal" href="#actionsModal" >Launch Modal</a>
+
 	</div>
 
 	<% if Rails.env.development? %>
@@ -54,6 +50,19 @@
       <%= debug(params) %>
     </div>
   <% end %>
+
+  <div class="modal hide fade in" id="actionsModal">
+	  <div class="modal-header">
+	    <a class="close" data-dismiss="modal">×</a>
+	    <h3>Modal header</h3>
+	  </div>
+	  <div class="modal-body">
+	    <p>One fine body…</p>
+	  </div>
+	  <div class="modal-footer">
+	    <a href="#" class="btn" data-dismiss="modal">Close</a>
+	  </div>
+	</div>
 	
 </body>
 </html>

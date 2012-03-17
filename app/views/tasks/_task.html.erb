@@ -4,6 +4,10 @@
                                 title:   task.content,
                                 :class => "btn btn-success btn-mini",
                                 :remote => true %>
+
+		<% if task %>                                
+			<%= link_to "EDIT", edit_task_path(task.id), :remote => true %>                                
+  	<% end %>
   <% end %>
 
 	<%= task.content %>
