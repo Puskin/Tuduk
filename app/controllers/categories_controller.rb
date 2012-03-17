@@ -1,9 +1,10 @@
 class CategoriesController < ApplicationController
 
   before_filter :signed_in_user
+  before_filter :correct_user, only: [:edit, :update, :destroy]
+
 
   def edit
-    @category = Category.find(params[:id])
   end
 
   def create
@@ -20,7 +21,6 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    @category = Category.find(params[:id])
     respond_to do |format|
       if @category.update_attributes(params[:category])
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
@@ -31,10 +31,17 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find(params[:id])
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url }
+      format.html { redirect_to root_path }
     end
   end
+
+  private
+
+    def correct_user
+      @category = Category.find(params[:id])
+      redirect_to(root_path) unless current_user?(@category.user)
+    end 
+
 end

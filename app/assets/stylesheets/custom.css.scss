@@ -39,6 +39,7 @@ ul#tasks_list li a { margin-right: 5px }
 #side li:first-child h6 { border-top: none }
 #side li i.icon-time,
 #side li i.icon-warning-sign { margin-right: 8px; float: left }
+#side li a.close { position: absolute;}
 
 
 #side #add_category_field { display: none; padding: 5px; height: 29px; }
