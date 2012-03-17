@@ -14,7 +14,7 @@
   	<li class="active">
 			<a href="#all" data-toggle="tab">
 				Everything
-  			<span class="badge pull-right" id="private_tasks_counter">
+  			<span class="badge pull-right">
   				<%= current_user.tasks.count %>
   			</span>
   		</a>		
@@ -24,9 +24,9 @@
 	  <%= render @categories %>
 
 	  <li><h6>Default</h6></li>
-	  <li><a href="#1" data-toggle="tab"><i class="icon-time"></i>Today</a></li>
-	  <li><a href="#2" data-toggle="tab"><i class="icon-time"></i>Tomorrow</a></li>
-	  <li><a href="#2" data-toggle="tab"><i class="icon-time"></i>This week</a></li>
-	  <li><a href="#2" data-toggle="tab"><i class="icon-warning-sign"></i>Overdue</a></li>
+	  <li><a href="#today" data-toggle="tab"><i class="icon-time"></i>Today</a></li>
+	  <li><a href="#tomorrow" data-toggle="tab"><i class="icon-time"></i>Tomorrow</a></li>
+	  <li><a href="#week" data-toggle="tab"><i class="icon-time"></i>This week</a></li>
+	  <li><a href="#overdue" data-toggle="tab"><i class="icon-warning-sign"></i>Overdue</a></li>
 	</ul>
 </div>

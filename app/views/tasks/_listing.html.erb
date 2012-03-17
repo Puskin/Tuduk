@@ -1,0 +1,16 @@
+<% if current_user.tasks.any? %>
+	<div class="tab-content">
+		<div class="tab-pane active" id="all">
+	  	<ul class="unstyled todo">
+	    	<%= render current_user.tasks %>
+	  	</ul>
+	  </div>
+		<% current_user.categories.each do |cat| %>
+		  <div class="tab-pane" id="<%= cat.id %>">
+		  	<ul class="unstyled todo">
+		    	<%= render :partial => 'tasks/task', :collection => cat.tasks %>
+		  	</ul>
+		  </div>
+		<% end %>
+	</div>
+<% end %>

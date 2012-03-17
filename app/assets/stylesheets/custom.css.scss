@@ -25,8 +25,8 @@ body.app #content { padding-bottom: 0 }
 
 
 /* Dashboard tasks list */
-ul#tasks_list li { margin-bottom: 5px; padding: 5px }
-ul#tasks_list li a { margin-right: 5px }
+ul.todo li { margin-bottom: 5px; padding: 5px }
+ul.todo li a { margin-right: 5px }
 
 /* Side elements */
 #side { background-color: #f6f6f6; }

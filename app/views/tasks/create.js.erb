@@ -1,3 +1,9 @@
-$("#tasks_list").html("<%= escape_javascript( render @tasks ) %>");
-$("#side").html('<%= escape_javascript( render "layouts/side") %>')
+$("#tasks_listing").html("<%= escape_javascript( render 'tasks/listing' ) %>");
+$("#side").html('<%= escape_javascript( render "layouts/side") %>');
+
+/* shitty option for choosing class
+$('#side .nav-tabs li').removeClass('active');
+$('a[href="#<%= @task.category_id %>"]').parent().addClass('active');
+*/
+
 $("#new_task #task_content").val("");
