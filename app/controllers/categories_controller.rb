@@ -12,7 +12,10 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.html { redirect_to root_path, :flash => { :success => 'Category was successfully created.' } }
-        format.js { @categories = Category.find_all_by_user_id(current_user.id) }
+        format.js {
+          @task = current_user.tasks.build 
+          @categories = Category.find_all_by_user_id(current_user.id) 
+        }
       else
         format.html { redirect_to root_path, :flash => { :error => "Title can't be blank!"} }
         format.js { @categories = Category.find_all_by_user_id(current_user.id) }
