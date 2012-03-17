@@ -1,2 +1,2 @@
 $("#tasks_list li#task_<%=@task.id%>").fadeOut(500);
-$("#private_tasks_counter").html('<%= @tasks.count %>');
+$("#side").html('<%= escape_javascript( render "layouts/side") %>')
