@@ -2,7 +2,7 @@ Tuduk::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :tasks
+  resources :tasks, only: [:new, :create, :edit, :update, :destroy]
   resources :categories, except: [:show]
   
   root :to => 'pages#home'

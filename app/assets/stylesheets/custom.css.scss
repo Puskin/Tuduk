@@ -32,6 +32,16 @@ body.app #content { padding-bottom: 0 }
 /* Dashboard tasks list */
 ul.todo li { margin-bottom: 5px; padding: 5px }
 ul.todo li a { margin-right: 5px }
+ul.todo li .label { margin: 2px 10px 0 0; }
+ul.todo li a.edit { display: none }
+ul.todo li:hover a.edit { display: block; }
+
+
+/* Modal task form */
+.modal-body #task_content { width: 480px; margin-bottom: 10px }
+.modal-body #task_category_id { margin-right: 10px }
+.modal-body .btn { float: right }
+
 
 /* Side elements */
 #side { background-color: #f6f6f6; }
