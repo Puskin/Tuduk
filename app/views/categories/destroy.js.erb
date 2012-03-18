@@ -1,9 +1,6 @@
 $("#side").html("<%= escape_javascript( render 'layouts/side' ) %>");
 $('#new_task_form').html("<%= escape_javascript( render 'tasks/form' ) %>");
-$('#tasks_listing').html("<%= escape_javascript( render 'tasks/listing' ) %>");
-$('#add_category_field input#category_title').val("");
-
-
+$('#tasks_listing').html("<%= escape_javascript( render 'tasks/listing' ) %>")
 
 $('#add_category_button').click(function(ev){
 		$('#add_category_field').slideToggle();

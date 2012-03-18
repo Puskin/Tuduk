@@ -5,6 +5,10 @@ class CategoriesController < ApplicationController
 
 
   def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
@@ -12,13 +16,10 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.html { redirect_to root_path, :flash => { :success => 'Category was successfully created.' } }
-        format.js {
-          @task = current_user.tasks.build 
-          @categories = Category.find_all_by_user_id(current_user.id) 
-        }
+        format.js { @task = current_user.tasks.build }
       else
         format.html { redirect_to root_path, :flash => { :error => "Title can't be blank!"} }
-        format.js { @categories = Category.find_all_by_user_id(current_user.id) }
+        format.js
       end
     end
   end
@@ -27,16 +28,20 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.update_attributes(params[:category])
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
+        format.js
       else
         format.html { render action: "edit" }
+        format.js
       end
     end
   end
 
   def destroy
+    Category.detach_tasks(@category.id)
     @category.destroy
     respond_to do |format|
       format.html { redirect_to root_path }
+      format.js { @task = current_user.tasks.build }
     end
   end
 

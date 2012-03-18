@@ -7,7 +7,7 @@
 	  		</a>
 	  	</h6>
 	  	<div id="add_category_field">
-				<%= render 'categories/form' %>
+				<%= render :partial => 'categories/form', :locals => { :action => "create" } %>
 	  	</div>
 	  </li>
 

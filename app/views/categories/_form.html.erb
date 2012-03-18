@@ -1,7 +1,20 @@
-<%= form_for(current_user.categories.build, :remote => true, :html => { :class => "form-horizontal pull-left"}) do |f| %>
+<% if action == "create" %>
+
+	<% object = current_user.categories.build %>
+	<% button = "Add" %>
+
+<% elsif action == "update" %>
+
+	<% object = @category %>
+	<% button = "Update" %>
+
+<% end %>
+
+
+<%= form_for(object, :remote => true, :html => { :class => "form-horizontal pull-left"}) do |f| %>
 
   <%= render 'shared/error_messages', object: f.object %>
   <%= f.text_field :title, :placeholder => "New list name", :class => "input-medium" %>
-  <%= f.submit "Add", :class => "btn btn-primary" %>
+  <%= f.submit button, :class => "btn btn-primary" %>
 
 <% end %>
