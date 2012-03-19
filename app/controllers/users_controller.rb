@@ -2,12 +2,15 @@ class UsersController < ApplicationController
 
   before_filter :signed_in_user,      except: [:new, :create]
   before_filter :signed_in_redirect,  only:   [:new, :create]
-  before_filter :correct_user,        only:   [:edit, :update, :destroy]
+  before_filter :correct_user,        only:   [:edit, :update, :destroy, :show]
   
   layout "frontend",                  only:   [:new]
 
 
   
+  def show
+  end
+
   def new
     @user = User.new
   end
