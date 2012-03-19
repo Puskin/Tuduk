@@ -1,32 +1,39 @@
-<div class="tabbable tabs-left">
-	<ul class="nav nav-tabs">
-	  <li>
-	  	<h6>Lists
-	  		<a href="#" class="btn btn-mini pull-right">
-	  			<i class="icon-plus active" id="add_category_button"></i>
-	  		</a>
-	  	</h6>
-	  	<div id="add_category_field">
-				<%= render :partial => 'categories/form', :locals => { :action => "create" } %>
-	  	</div>
-	  </li>
+<% if controller_name != "users" %>
 
-  	<li class="active">
-			<a href="#all" data-toggle="tab">
-				Everything
-  			<span class="badge pull-right">
-  				<%= current_user.tasks.count %>
-  			</span>
-  		</a>		
-		</li>
+	<div class="tabbable tabs-left">
+		<ul class="nav nav-tabs">
+		  <li>
+		  	<h6>Lists
+		  		<a href="#" class="btn btn-mini pull-right">
+		  			<i class="icon-plus active" id="add_category_button"></i>
+		  		</a>
+		  	</h6>
+		  	<div id="add_category_field">
+					<%= render :partial => 'categories/form', :locals => { :action => "create" } %>
+		  	</div>
+		  </li>
 
-	  <% @categories = Category.find_all_by_user_id(current_user.id) %>
-	  <%= render @categories %>
+	  	<li class="active">
+				<a href="#all" data-toggle="tab">
+					Everything
+	  			<span class="badge pull-right">
+	  				<%= current_user.tasks.count %>
+	  			</span>
+	  		</a>		
+			</li>
 
-	  <li><h6>Default</h6></li>
-	  <li><a href="#today" data-toggle="tab"><i class="icon-time"></i>Today</a></li>
-	  <li><a href="#tomorrow" data-toggle="tab"><i class="icon-time"></i>Tomorrow</a></li>
-	  <li><a href="#week" data-toggle="tab"><i class="icon-time"></i>This week</a></li>
-	  <li><a href="#overdue" data-toggle="tab"><i class="icon-warning-sign"></i>Overdue</a></li>
-	</ul>
-</div>
+		  <%= render @categories %>
+
+		  <li><h6>Default</h6></li>
+		  <li><a href="#today" data-toggle="tab"><i class="icon-time"></i>Today</a></li>
+		  <li><a href="#tomorrow" data-toggle="tab"><i class="icon-time"></i>Tomorrow</a></li>
+		  <li><a href="#week" data-toggle="tab"><i class="icon-time"></i>This week</a></li>
+		  <li><a href="#overdue" data-toggle="tab"><i class="icon-warning-sign"></i>Overdue</a></li>
+		</ul>
+	</div>
+
+<% else %>
+
+	&nbsp;
+
+<% end %>

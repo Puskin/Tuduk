@@ -3,10 +3,6 @@ class TasksController < ApplicationController
   before_filter :signed_in_user
   before_filter :correct_user, only: [:edit, :update, :destroy]
 
-  def new
-    @task = Task.new
-  end
-
   def edit
     respond_to do |format|
       format.html
@@ -19,7 +15,7 @@ class TasksController < ApplicationController
       respond_to do |format|
         if @task.save
           format.html { redirect_to root_path, :flash => { :success => 'Task was successfully created.' } }
-          format.js { @tasks = current_user.tasks }
+          format.js { reload_items }
         else
           format.html { redirect_to root_path, :flash => { :error => 'Describe the task.' } }
           format.js 
@@ -31,7 +27,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update_attributes(params[:task])
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.js
+        format.js { reload_items }
       else
         format.html { render action: "edit" }
         format.js
@@ -43,7 +39,7 @@ class TasksController < ApplicationController
     @task.destroy
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js { @tasks = current_user.tasks }
+      format.js { reload_items }
     end
   end
 
@@ -52,6 +48,12 @@ class TasksController < ApplicationController
     def correct_user
       @task = Task.find(params[:id])
       redirect_to(root_path) unless current_user?(@task.user)
+    end
+
+    def reload_items
+      @task = current_user.tasks.build if action_name != "destroy"
+      @tasks = Task.find_all_by_user_id(current_user.id)
+      @categories = Category.find_all_by_user_id(current_user.id)
     end
   
 end

@@ -5,9 +5,13 @@ class PagesController < ApplicationController
   
   def home
     if signed_in?
-      @user = current_user
-      @tasks = Task.find_all_by_user_id(current_user.id)
       @task = current_user.tasks.build
+      @categories = Category.find_all_by_user_id(current_user.id)
+      if params[:search]
+        @tasks = current_user.tasks.search(params[:search])
+      else
+        @tasks = Task.find_all_by_user_id(current_user.id)
+      end
     end
   end
 

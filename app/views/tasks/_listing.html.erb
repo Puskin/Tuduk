@@ -1,10 +1,14 @@
 <div class="tab-content">
 	<div class="tab-pane active" id="all">
   	<ul class="unstyled todo">
-  		<!-- brzydko zrobione ale bug z pustym polem -->
 	  	<h3>Everything</h3>
-  		<% all_tasks = Task.find_all_by_user_id(current_user.id) %> 
-    	<%= render :partial => 'tasks/task', :collection => all_tasks %>
+	  	<% if params[:search] %>
+	  		<div class="alert alert-notice">
+					Displaying search results for "<%= params[:search] %>", <a href="/">cancel search</a>.
+					<a href="/" class="close" data-dismiss="alert">×</a>
+      	</div>
+      <% end %>
+    	<%= render :partial => 'tasks/task', :collection => @tasks %>
   	</ul>
   </div>
 
@@ -25,5 +29,4 @@
 	  	</ul>
 	  </div>
 	<% end %>
-
 </div>

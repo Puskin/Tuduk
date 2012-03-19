@@ -3,11 +3,10 @@ class CategoriesController < ApplicationController
   before_filter :signed_in_user
   before_filter :correct_user, only: [:edit, :update, :destroy]
 
-
   def edit
     respond_to do |format|
       format.html
-      format.js
+      format.js { reload_items }
     end
   end
 
@@ -16,7 +15,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.html { redirect_to root_path, :flash => { :success => 'Category was successfully created.' } }
-        format.js { @task = current_user.tasks.build }
+        format.js { reload_items }
       else
         format.html { redirect_to root_path, :flash => { :error => "Title can't be blank!"} }
         format.js
@@ -28,7 +27,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.update_attributes(params[:category])
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.js
+        format.js { reload_items }
       else
         format.html { render action: "edit" }
         format.js
@@ -41,7 +40,7 @@ class CategoriesController < ApplicationController
     @category.destroy
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js { @task = current_user.tasks.build }
+      format.js { reload_items }
     end
   end
 
@@ -51,5 +50,11 @@ class CategoriesController < ApplicationController
       @category = Category.find(params[:id])
       redirect_to(root_path) unless current_user?(@category.user)
     end 
+
+    def reload_items
+      @task = current_user.tasks.build
+      @tasks = Task.find_all_by_user_id(current_user.id)
+      @categories = Category.find_all_by_user_id(current_user.id)
+    end
 
 end

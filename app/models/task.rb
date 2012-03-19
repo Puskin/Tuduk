@@ -9,4 +9,11 @@ class Task < ActiveRecord::Base
 
   default_scope order: 'tasks.created_at DESC'
 
+  
+  def self.search(search)
+	  if search
+	    find(:all, :conditions => ['content LIKE ?', "%#{search}%"])
+	  end
+	end
+
 end
