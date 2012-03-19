@@ -1,4 +1,9 @@
 $("#tasks_listing li#task_<%=@task.id%>").fadeOut(500, function() { $(this).remove(); });
 $("#side").html('<%= escape_javascript( render "layouts/side") %>')
 
+$("#new_task #task_content").val("");
+$('#add_category_button').click(function(ev){
+		$('#add_category_field').slideToggle();
+});
+
 
