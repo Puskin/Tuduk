@@ -31,6 +31,14 @@ body.app #content { padding-bottom: 0 }
 #new_user input[type=password] { width: 270px }
 
 
+/* User settings header */
+#settings p { line-height: 14px; padding-top: 11px; text-align: left }
+#settings p small { color: gray; }
+#avatar { width: 50px; height: 50px; position: relative; margin-right: 10px }
+#avatar .mask { position: absolute; left: 0; top: 0; width: 50px; height: 50px; background: url(avatarMask.png) }
+
+
+
 /* Dashboard tasks list */
 #tasks_listing h3 .btn-group { display: inline-block }
 

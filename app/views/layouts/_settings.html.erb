@@ -1,18 +1,19 @@
-<div class="well">
-	
-	Adjust layout 
-	
-	<div class="btn btn-success btn-mini pull-right">
-		Close
-	</div>
+<div id="avatar" class="pull-left">
+	<div class="mask"></div>
+	<%= image_tag(gravatar_url_for(current_user), :size => "50x50") %>
+</div>
+<p class="pull-left">
+	<% tasks = current_user.tasks.unfinished.count %>
+	<% if tasks > 0 %>
+		Hello <%= current_user.name %>, looks like a busy day, huh?<br/>
+		<small class="pull-left">There are <%= current_user.tasks.unfinished.count %> tasks waiting to be done.</small>
+	<% elsif tasks == 0 %>
+		Hello <%= current_user.name %>, looking for something to do?<br/>
+		<small class="pull-left">Go grab a coffee or add some tasks and get things done!</small>
+	<% end %>
+</p>
 
-	<div class="pull-right">
-		&nbsp;&nbsp;|&nbsp;&nbsp;
-	</div>
-
-	<div class="btn-group pull-right" data-toggle="buttons-radio">
-	  <button class="btn btn-mini" id="layoutFixed">Fixed</button>
-	  <button class="btn btn-mini" id="layoutFluid">Fluid</button>
-	</div>
-	
+<div class="btn-group pull-right" data-toggle="buttons-radio">
+  <button class="btn btn-mini" id="layoutFixed">Fixed</button>
+  <button class="btn btn-mini" id="layoutFluid">Fluid</button>
 </div>
