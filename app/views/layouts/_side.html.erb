@@ -17,7 +17,7 @@
 				<a href="#all" data-toggle="tab">
 					Everything
 	  			<span class="badge pull-right">
-	  				<%= current_user.tasks.count %>
+	  				<%= current_user.tasks.unfinished.count %>
 	  			</span>
 	  		</a>		
 			</li>
@@ -29,6 +29,10 @@
 		  <li><a href="#tomorrow" data-toggle="tab"><i class="icon-time"></i>Tomorrow</a></li>
 		  <li><a href="#week" data-toggle="tab"><i class="icon-time"></i>This week</a></li>
 		  <li><a href="#overdue" data-toggle="tab"><i class="icon-warning-sign"></i>Overdue</a></li>
+			
+		  <li><h6>Others</h6></li>
+ 		  <li><a href="#archive" data-toggle="tab"><i class="icon-check"></i>Archive</a></li>
+
 		</ul>
 	</div>
 

@@ -36,7 +36,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task.destroy
+    if @task.finished?
+      @task.unfinish
+    else
+      @task.finish
+    end
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js { reload_items }
@@ -48,12 +52,6 @@ class TasksController < ApplicationController
     def correct_user
       @task = Task.find(params[:id])
       redirect_to(root_path) unless current_user?(@task.user)
-    end
-
-    def reload_items
-      @task = current_user.tasks.build if action_name != "destroy"
-      @tasks = Task.find_all_by_user_id(current_user.id)
-      @categories = Category.find_all_by_user_id(current_user.id)
     end
   
 end

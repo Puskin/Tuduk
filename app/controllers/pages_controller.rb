@@ -10,7 +10,8 @@ class PagesController < ApplicationController
       if params[:search]
         @tasks = current_user.tasks.search(params[:search])
       else
-        @tasks = Task.find_all_by_user_id(current_user.id)
+        @tasks = Task.unfinished.find_all_by_user_id(current_user.id)
+        @tasks_finished = Task.finished.find_all_by_user_id(current_user.id)
       end
     end
   end

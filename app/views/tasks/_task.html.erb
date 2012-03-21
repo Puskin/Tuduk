@@ -1,8 +1,16 @@
+<% if finished == false %>
+	<% buttonClass = "btn btn-success btn-mini" %>
+	<% buttonTitle = "DONE" %>
+<% elsif finished == true %>
+	<% buttonClass = "btn btn-primary btn-mini" %>
+	<% buttonTitle = "UNDONE" %>
+<% end %>
+
 <li id='<%= "task_#{task.id}" %>' class="well">
 	<% if current_user?(task.user) %>
-    <%= link_to "DONE", task, method:  :delete,
+    <%= link_to "#{buttonTitle}", task, method:  :delete,
                                 title:   task.content,
-                                :class => "btn btn-success btn-mini",
+                                :class => "#{buttonClass}",
                                 :remote => true %>
 
 		<%= link_to "<i class='icon-edit'></i>".html_safe, edit_task_path(task.id), :remote => true, :class => "btn btn-mini pull-right edit" %>                                

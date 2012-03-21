@@ -8,12 +8,11 @@
 					<a href="/" class="close" data-dismiss="alert">×</a>
       	</div>
       <% end %>
-    	<%= render :partial => 'tasks/task', :collection => @tasks %>
+    	<%= render :partial => 'tasks/task', :collection => @tasks, :locals => { :finished => false } %>
   	</ul>
   </div>
 
-  <% categories = Category.find_all_by_user_id(current_user.id) %>
-	<% categories.each do |cat| %>
+	<% @categories.each do |cat| %>
 	  <div class="tab-pane" id="<%= cat.id %>">
 	  	<h3>
 	  		<%= cat.title %>
@@ -25,8 +24,17 @@
 				</div>
 	  	</h3>
 	  	<ul class="unstyled todo">
-	    	<%= render :partial => 'tasks/task', :collection => cat.tasks %>
+	    	<%= render :partial => 'tasks/task', :collection => cat.tasks.unfinished, :locals => { :finished => false } %>
 	  	</ul>
 	  </div>
 	<% end %>
+
+	<div class="tab-pane" id="archive">
+  	<ul class="unstyled todo">
+	  	<h3>Archive</h3>
+    	<%= render :partial => 'tasks/task', :collection => @tasks_finished, :locals => { :finished => true } %>
+  	</ul>
+  </div>
+
+
 </div>

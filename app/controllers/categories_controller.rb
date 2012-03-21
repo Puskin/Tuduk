@@ -51,10 +51,4 @@ class CategoriesController < ApplicationController
       redirect_to(root_path) unless current_user?(@category.user)
     end 
 
-    def reload_items
-      @task = current_user.tasks.build
-      @tasks = Task.find_all_by_user_id(current_user.id)
-      @categories = Category.find_all_by_user_id(current_user.id)
-    end
-
 end

@@ -57,7 +57,8 @@ ul.todo li:hover a.edit { display: block; }
 }
 #side li:first-child h6 { border-top: none!important }
 #side li i.icon-time,
-#side li i.icon-warning-sign { margin-right: 8px; float: left }
+#side li i.icon-warning-sign,
+#side li i.icon-check { margin-right: 8px; float: left }
 #side li a.close { position: absolute;}
 
 

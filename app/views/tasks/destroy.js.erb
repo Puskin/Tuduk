@@ -1,4 +1,8 @@
-$("#tasks_listing li#task_<%=@task.id%>").fadeOut(500, function() { $(this).remove(); });
+$("#tasks_listing li#task_<%=@task.id%>").fadeOut(350, function() { $(this).remove(); });
+$('#tasks_listing').delay(360).queue(function(n) {
+  $(this).html("<%= escape_javascript( render 'tasks/listing' ) %>");
+  n();
+});
 $("#side").html('<%= escape_javascript( render "layouts/side") %>')
 
 $("#new_task #task_content").val("");
