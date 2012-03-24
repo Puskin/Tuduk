@@ -14,7 +14,11 @@
   <%= f.text_field :content, :placeholder => "Task description here", :class => "span3" %>
   <%= f.select(:category_id, current_user.categories.collect {|cat| [ cat.title, cat.id ]}, 
       {:include_blank => true}, :class => "span2") %>
-  <%= f.text_field :due_date, :class => "datepicker span2" %>
+  <% if @task.new_record? %>      
+    <%= f.text_field :due_date, :class => "span2", :id => "task_due_date" %>
+  <% else %>
+    <%= f.text_field :due_date, :class => "span2", :id => "task_due_date_update" %>
+  <% end %>
   <%= f.submit :class => "btn btn-primary", :disable_with => "Loading..." %>
 
 <% end %>

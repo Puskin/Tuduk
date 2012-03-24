@@ -2,6 +2,5 @@ $('#actionsModal').modal('show');
 $('#actionsModal .modal-header h3').html("<%= @task.content %>");
 $("#actionsModal .modal-body").html("<%= escape_javascript( render 'tasks/form' ) %>");
 
-$(function() {
-	$(".modal-body #task_due_date").datepicker({dateFormat: 'yy-mm-dd'});
-});
+$("#task_due_date_update").datepicker({dateFormat: 'yy-mm-dd', firstDay: 1});
+
