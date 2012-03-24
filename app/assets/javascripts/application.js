@@ -26,6 +26,7 @@ $(document).ready(function(ev){
 		$("#task_due_date").datepicker({dateFormat: 'yy-mm-dd', firstDay: 1});
 	});
 
+	$('.calendar_tooltip').tooltip();
 
 	/* Layout resizing */
 

@@ -21,8 +21,9 @@ module CalendarHelper
   def event_calendar
     calendar event_calendar_options do |args|
       event = args[:event]
-      cssClass = "finished" if event.finished?
-      link_to event.content, "#", :class => cssClass  
+      cssClass = " finished" if event.finished?
+      title = event.content if event.content.length > 22
+      link_to truncate(event.content, :length => 22), "#", :class => "calendar_tooltip#{cssClass}", :rel => "tooltip", :title => title  
     end
   end
 
