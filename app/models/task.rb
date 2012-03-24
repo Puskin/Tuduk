@@ -13,6 +13,7 @@ class Task < ActiveRecord::Base
 
   scope :unfinished, lambda { where("tasks.done_at IS NULL") }
   scope :finished, lambda { where("tasks.done_at IS NOT NULL AND tasks.done_at <= ?", Time.zone.now) }
+  scope :scheduled, lambda { where("tasks.due_date IS NOT NULL") }
 
   scope :today, lambda { unfinished.where("tasks.due_date IS NOT NULL AND tasks.due_date BETWEEN ? AND ?", Time.zone.now.at_beginning_of_day, Time.zone.now.end_of_day) }  
   scope :tomorrow, lambda { unfinished.where("tasks.due_date IS NOT NULL AND tasks.due_date BETWEEN ? AND ?", Time.zone.now.at_beginning_of_day+1.day, Time.zone.now.end_of_day+1.day) }  
