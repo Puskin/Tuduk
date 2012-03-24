@@ -3,32 +3,22 @@
 	<div class="tabbable tabs-left">
 		<ul class="nav nav-tabs">
 		  <li>
-		  	<h6>Lists
-		  		<a href="#" class="btn btn-mini pull-right">
-		  			<i class="icon-plus active" id="add_category_button"></i>
-		  		</a>
-		  	</h6>
-		  	<div id="add_category_field">
-					<%= render :partial => 'categories/form', :locals => { :action => "create" } %>
-		  	</div>
+		  	<h6>Lists<a href="#" class="btn btn-mini pull-right"><i class="icon-plus active" id="add_category_button"></i></a></h6>
+		  	<div id="add_category_field"><%= render :partial => 'categories/form', :locals => { :action => "create" } %></div>
 		  </li>
 
-	  	<li class="active">
-				<a href="#all" data-toggle="tab">
-					Everything
-	  			<span class="badge pull-right">
-	  				<%= current_user.tasks.unfinished.count %>
-	  			</span>
-	  		</a>		
-			</li>
+	  	<li class="active"><a href="#all" data-toggle="tab">Everything<span class="badge pull-right"><%= @tasks.unfinished.count %></span></a></li>
 
 		  <%= render @categories %>
 
 		  <li><h6>Default</h6></li>
-		  <li><a href="#today" data-toggle="tab"><i class="icon-time"></i>Today</a></li>
-		  <li><a href="#tomorrow" data-toggle="tab"><i class="icon-time"></i>Tomorrow</a></li>
-		  <li><a href="#week" data-toggle="tab"><i class="icon-time"></i>This week</a></li>
-		  <li><a href="#overdue" data-toggle="tab"><i class="icon-warning-sign"></i>Overdue</a></li>
+		  <li><a href="#today" data-toggle="tab"><i class="icon-time"></i>Today<span class="badge pull-right"><%= @tasks.today.count %></span></a></li>
+		  <li><a href="#tomorrow" data-toggle="tab"><i class="icon-time"></i>Tomorrow<span class="badge pull-right"><%= @tasks.tomorrow.count %></span></a></li>
+		  <li><a href="#week" data-toggle="tab"><i class="icon-time"></i>This week<span class="badge pull-right"><%= @tasks.week.count %></span></a></li>
+		  <li>
+		  	<a href="#overdue" data-toggle="tab"><i class="icon-warning-sign"></i>Overdue
+		  	<span class="badge<%= " badge-error" if @tasks.overdue.count > 0 %> pull-right"><%= @tasks.overdue.count %></span></a>
+		  </li>
 			
 		  <li><h6>Others</h6></li>
  		  <li><a href="#archive" data-toggle="tab"><i class="icon-check"></i>Archive</a></li>

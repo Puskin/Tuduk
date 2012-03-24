@@ -8,16 +8,16 @@
 
 <li id='<%= "task_#{task.id}" %>' class="well">
 	<% if current_user?(task.user) %>
-    <%= link_to "#{buttonTitle}", task, method:  :delete,
-                                title:   task.content,
-                                :class => "#{buttonClass}",
-                                :remote => true %>
-
+    <%= link_to "#{buttonTitle}", task, method:  :delete, title:   task.content, :class => "#{buttonClass}", :remote => true %>
 		<%= link_to "<i class='icon-edit'></i>".html_safe, edit_task_path(task.id), :remote => true, :class => "btn btn-mini pull-right edit" %>                                
   <% end %>
 
 	<%= task.content %>
+	
 	<% if task.category %>
 		<span class="label pull-right"><%= task.category.title %></span>
+	<% end %>
+	<% if task.due_date %>
+		<span class="label label-info pull-right"><%= task.due_date.strftime("%A, %Y-%m-%d") %></span>
 	<% end %>
 </li>

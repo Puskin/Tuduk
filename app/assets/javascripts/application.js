@@ -22,6 +22,11 @@ $(document).ready(function(ev){
 		$('#add_category_field').slideToggle();
 	}); 
 
+	$(function() {
+		$("#new_task_form #task_due_date").datepicker({dateFormat: 'yy-mm-dd'});
+		$(".modal-body #task_due_date").datepicker({dateFormat: 'yy-mm-dd'});
+	});
+
 
 	/* Layout resizing */
 

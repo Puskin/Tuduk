@@ -8,7 +8,7 @@
 					<a href="/" class="close" data-dismiss="alert">×</a>
       	</div>
       <% end %>
-    	<%= render :partial => 'tasks/task', :collection => @tasks, :locals => { :finished => false } %>
+    	<%= render :partial => 'tasks/task', :collection => @tasks.unfinished, :locals => { :finished => false } %>
   	</ul>
   </div>
 
@@ -29,10 +29,38 @@
 	  </div>
 	<% end %>
 
+	<div class="tab-pane" id="today">
+  	<ul class="unstyled todo">
+	  	<h3>Today</h3>
+    	<%= render :partial => 'tasks/task', :collection => @tasks.today, :locals => { :finished => false } %>
+  	</ul>
+  </div>
+
+  <div class="tab-pane" id="tomorrow">
+  	<ul class="unstyled todo">
+	  	<h3>Tomorrow</h3>
+    	<%= render :partial => 'tasks/task', :collection => @tasks.tomorrow, :locals => { :finished => false } %>
+  	</ul>
+  </div>
+
+  <div class="tab-pane" id="week">
+  	<ul class="unstyled todo">
+	  	<h3>This week</h3>
+    	<%= render :partial => 'tasks/task', :collection => @tasks.week, :locals => { :finished => false } %>
+  	</ul>
+  </div>
+
+  <div class="tab-pane" id="overdue">
+  	<ul class="unstyled todo">
+	  	<h3>Overdue</h3>
+    	<%= render :partial => 'tasks/task', :collection => @tasks.overdue, :locals => { :finished => false } %>
+  	</ul>
+  </div>
+
 	<div class="tab-pane" id="archive">
   	<ul class="unstyled todo">
 	  	<h3>Archive</h3>
-    	<%= render :partial => 'tasks/task', :collection => @tasks_finished, :locals => { :finished => true } %>
+    	<%= render :partial => 'tasks/task', :collection => @tasks.finished, :locals => { :finished => true } %>
   	</ul>
   </div>
 

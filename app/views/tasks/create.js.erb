@@ -7,6 +7,10 @@ $('a[href="#<%= @task.category_id %>"]').parent().addClass('active');
 */
 
 $("#new_task #task_content").val("");
+$("#new_task #task_due_date").val("");
+
+$("#new_task_form #task_due_date").datepicker({dateFormat: 'yy-mm-dd'});
+
 $('#add_category_button').click(function(ev){
 		$('#add_category_field').slideToggle();
 });

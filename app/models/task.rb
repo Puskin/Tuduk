@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
 
-  attr_accessible :content, :category_id
+  attr_accessible :content, :category_id, :due_date
   belongs_to :user
   belongs_to :category
 
@@ -11,8 +11,14 @@ class Task < ActiveRecord::Base
 
   scope :unfinished, lambda { where("tasks.done_at IS NULL") }
   scope :finished, lambda { where("tasks.done_at IS NOT NULL AND tasks.done_at <= ?", Time.zone.now) }
-  
-  
+
+  scope :today, lambda { unfinished.where("tasks.due_date IS NOT NULL AND tasks.due_date BETWEEN ? AND ?", Time.zone.now.at_beginning_of_day, Time.zone.now.end_of_day) }  
+  scope :tomorrow, lambda { unfinished.where("tasks.due_date IS NOT NULL AND tasks.due_date BETWEEN ? AND ?", Time.zone.now.at_beginning_of_day+1.day, Time.zone.now.end_of_day+1.day) }  
+  scope :week, lambda { unfinished.where("tasks.due_date IS NOT NULL AND tasks.due_date BETWEEN ? AND ?", Time.zone.now.at_beginning_of_day, Time.zone.now+7.days) }  
+
+  scope :overdue, lambda { unfinished.where("tasks.due_date IS NOT NULL AND tasks.due_date <= ?", Time.zone.now) }  
+
+
   def self.search(search)
 	  if search
 	    find(:all, :conditions => ['content LIKE ?', "%#{search}%"])
