@@ -1,10 +1,14 @@
 Tuduk::Application.routes.draw do
 
+  
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :tasks, only: [:new, :create, :edit, :update, :destroy]
   resources :categories, except: [:show]
-  
+
+  resources :calendar
+  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
   root :to => 'pages#home'
 
   match "/signup", to: 'users#new'

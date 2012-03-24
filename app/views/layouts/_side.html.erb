@@ -1,4 +1,4 @@
-<% if controller_name != "users" %>
+<% if controller_name != "users" && controller_name != "calendar"  %>
 
 	<div class="tabbable tabs-left">
 		<ul class="nav nav-tabs">
@@ -26,8 +26,8 @@
 		</ul>
 	</div>
 
-<% else %>
+<% end %>
 
+<% if controller_name == "users" %>
 	&nbsp;
-
 <% end %>

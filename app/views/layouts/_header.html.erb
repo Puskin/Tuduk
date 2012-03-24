@@ -4,6 +4,7 @@
     <%= link_to "Tuduk", root_path, :class => "brand" %>
     <ul class="nav pull-left">
       <li<%=" class='active'" if action_name == 'home'%>><%= link_to "Dashboard", root_path %>
+      <li<%=" class='active'" if controller_name == 'calendar'%>><%= link_to "Calendar", calendar_index_path %>
     </ul>
 
     <ul class="nav pull-right">

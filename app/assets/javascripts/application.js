@@ -23,8 +23,8 @@ $(document).ready(function(ev){
 	}); 
 
 	$(function() {
-		$("#new_task_form #task_due_date").datepicker({dateFormat: 'yy-mm-dd'});
-		$(".modal-body #task_due_date").datepicker({dateFormat: 'yy-mm-dd'});
+		$("#new_task_form #task_due_date").datepicker({dateFormat: 'yy-mm-dd', firstDay: 1});
+		$(".modal-body #task_due_date").datepicker({dateFormat: 'yy-mm-dd', firstDay: 1});
 	});
 
 

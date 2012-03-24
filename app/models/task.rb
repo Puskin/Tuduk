@@ -4,6 +4,8 @@ class Task < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 
+  has_event_calendar :start_at_field  => 'due_date', :end_at_field => 'due_date'
+
   validates :content, presence: true
 	validates :user_id, presence: true
 
